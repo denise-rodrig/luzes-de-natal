@@ -1,0 +1,98 @@
+@charset "UTF-8";
+*{
+  margin: 0%;
+  padding: 0%;
+}
+body{
+  background-color: rgba(0, 0, 0, 0.849);
+}
+/* lista das luzes  */
+.luzes{
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  margin: -15px 0 0 0;
+  padding: 0;
+  pointer-events: none;
+  width: 100%;
+}
+/*itens ja devinido animação infinita,com duração de 2s,com nome flash,animação */
+li{
+  position: relative;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width:12px ;
+  height:28px ;
+  border-radius: 50%;
+  margin: 23px 21px 2px 3px;
+  display: inline-block;
+  background: rgba(0, 247, 165,1);
+  animation-name: flash-1;
+  animation-duration: 2s; }
+/*aqui tem um conjunto de "itens irmãos",sendo que escolhido 2 de n itens +1 configurando as cores e animação*/
+li:nth-child(2n+1){
+  background: rgba(0,255,255,1);
+  box-shadow: 0px 7px 10px rgba(0,255,255,0.5);
+  animation-name: flash-2;
+  animation-duration: 0.6s;
+} 
+li:nth-child(4n+2) {
+  background: rgba(247,0,148,1);
+  box-shadow: 0px 7px 10px rgba(247,0,148,1);
+  animation-name: flash-3;
+  animation-duration: 0.8s;
+}
+/*aqui a animação para itens em pares*/
+li:nth-child(odd) {
+  animation-duration: 1.8s;
+}
+li:nth-child(3n+1) {
+  animation-duration:1.4s;}
+/*antes dos itens*/
+li:before{
+  content: "";
+  position: absolute;
+  background: rgb(13, 14, 13);
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  top: -4px;
+  left: 1px;
+}
+/*depois*/
+li:after{
+  content: "";
+  top: 1px;
+  left: 9px;
+  position: absolute;
+  width: 32px;
+  height: 2px;
+  border-bottom: solid #222222  2px;
+  border-radius:50%;
+  background: rgba(90, 92, 90, 0.932);
+}
+/*animação de pisca pisca para os conjuntos acima*/
+@keyframes flash-1{ 
+  0%, 100% { background: rgba(0,247,165,1);
+  box-shadow: 0px 5px 8px rgba(0,247,165,1);} 
+
+  50% { background: rgba(0,247,165,0.5);
+  box-shadow: 0px 7px 10px rgba(0,247,165,0.2);} }
+
+@keyframes flash-2 { 
+  0%, 100% { background: rgba(0,255,255,1);
+  box-shadow: 0px 7px 10px rgba(0,255,255,1);} 
+  50% { background: rgba(0,255,255,0.5);
+  box-shadow: 0px 3px 3px rgba(0,255,255,0.2);}
+}
+@keyframes flash-3 { 
+  0%, 100% { background: rgba(247,0,148,1);
+  box-shadow: 0px 7px 10px rgba(247,0,148,1);} 
+  50% { background: rgba(247,0,148,0.5);
+  box-shadow: 0px 2px 3px rgba(247,0,148,0.2);}
+}
